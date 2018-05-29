@@ -21,7 +21,7 @@ const conditionToken = token => {
 const parseToken = token => {
   if(typeof token === 'string') {
     return (game, thisObj, targetObj) => token
-  } else if (token.type === 'RAW_TARGET') {
+  } else if (token.type === 'INPUT') {
     return (game, thisObj, targetObj) => targetObj
   } else if (token.type === 'condition') {
     const stringFn = conditionToken(token);

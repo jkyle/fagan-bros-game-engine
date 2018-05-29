@@ -12,7 +12,7 @@ const processOperand = operand => {
   if (operand.operator) {
     const expressionFn = processExpression(operand)
     return (game, thisObj, targetObj) => expressionFn(game, thisObj, targetObj)
-  } else if (operand.type && operand.type === 'RAW_TARGET'){
+  } else if (operand.type && operand.type === 'INPUT'){
     return (game, thisObj, targetObj) => targetObj
   } else if (operand.type && operand.type){
     const propfn = getProperty(operand)

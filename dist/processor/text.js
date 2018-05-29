@@ -36,7 +36,7 @@ var parseToken = function parseToken(token) {
     return function (game, thisObj, targetObj) {
       return token;
     };
-  } else if (token.type === 'RAW_TARGET') {
+  } else if (token.type === 'INPUT') {
     return function (game, thisObj, targetObj) {
       return targetObj;
     };
