@@ -1,16 +1,14 @@
 import inputParser from './input-parser'
-import createSelector from './selectors'
+import { setSelector, select } from './selectors'
 
-const selectors = {
+setSelector({
   $LOCATION: ['$OBJECTS', ['$GLOBAL', 'location']],
   $OBJECTS: ['objects'],
   $GLOBAL: [],
   $BUFFER: ['buffer'],
   $PLAYER: ['PLAYER'],
   $INVENTORY: ['$PLAYER', 'items']
-}
-
-const select = createSelector(selectors)
+})
 
 const noop = (event, state) => state
 
@@ -23,6 +21,7 @@ export default (initialState, middleware) => {
   let state = initialState;
 
   return {
+    setSelector,
     subscribe: (cb) => { subscribers.push(cb); cb(state) },
     dispatch: (input) => {
       const action = typeof input === 'string' ? inputParser(input) : input
